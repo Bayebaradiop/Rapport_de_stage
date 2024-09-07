@@ -12,6 +12,7 @@ import { DetailleCertificatComponent } from './detaille-certificat/detaille-cert
 import { PiecesTrouveesComponent } from './pieces-trouvees/pieces-trouvees.component';
 import { PiecePerdueComponent } from './piece-perdue/piece-perdue.component';
 import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu-by-person.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'Inscription', component: InscriptionComponent},
@@ -23,7 +24,9 @@ const routes: Routes = [
   { path: 'DetailleCertificat', component: DetailleCertificatComponent},
   { path: 'PiecesTrouvees', component: PiecesTrouveesComponent},
   { path: 'PiecePerdue', component: PiecePerdueComponent},  
+  { path: 'dashboard', component:DashboardComponent},  
   { path: 'PiecePerdueByUser', component: PiecePerduByPersonComponent},
+  { path: '', redirectTo: '/Connexion', pathMatch: 'full' },
 
 
 

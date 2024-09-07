@@ -37,22 +37,24 @@
 									</p>
 								</div>
 			      	</div>
-							<form action=""  class="signin-form">
-			      		<div class="form-group mb-3">
-			      			<label class="label" for="name">Email</label>
-			      			<input type="text" class="form-control" formControlName="Email" placeholder="Email" required>
-							<!-- <span *ngIf="valide && loginForm.controls.Email.errors" class="text-danger">* Veillez renseigner l'email</span> -->
-			      		</div>
-		            <div class="form-group mb-3">
-		            	<label class="label" for="password">Mot de passe</label>
-		              <input type="password" class="form-control" formControlName="password" placeholder="Mot de passe" required>
-					  <!-- <span *ngIf="valide && loginForm.controls.password.errors" class="text-danger">* Veillez renseigner le mot de passe </span> -->
-		            </div>
-		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Connexion</button>
-		            </div>
-		            
-		          </form>
+					  <form [formGroup]="loginForm" (ngSubmit)="login()" class="signin-form">
+						<div *ngIf="message" class="alert alert-danger">
+						  {{ message }}
+						</div>
+						<div class="form-group mb-3">
+						  <label class="label" for="email">Email</label>
+						  <input type="text" id="email" class="form-control" formControlName="email" placeholder="Email" required>
+						</div>
+						<div class="form-group mb-3">
+						  <label class="label" for="password">Mot de passe</label>
+						  <input type="password" id="password" class="form-control" formControlName="password" placeholder="Mot de passe" required>
+						</div>
+						<div class="form-group">
+						  <button type="submit" class="form-control btn btn-primary rounded submit px-3">Connexion</button>
+						</div>
+					  </form>
+					  
+					  
 		          <p class="text-center">Vous n'avez pas de compte? <a data-toggle="tab" routerLink='/Inscription'>S'inscrire</a></p>
 		        </div>
 		      </div>

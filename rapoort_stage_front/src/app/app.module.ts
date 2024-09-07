@@ -17,6 +17,8 @@ import { DetailleCertificatComponent } from './detaille-certificat/detaille-cert
 import { PiecePerdueComponent } from './piece-perdue/piece-perdue.component';
 import { PiecesTrouveesComponent } from './pieces-trouvees/pieces-trouvees.component';
 import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu-by-person.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
