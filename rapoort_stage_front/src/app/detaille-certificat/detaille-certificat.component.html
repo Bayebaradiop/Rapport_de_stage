@@ -1,0 +1,137 @@
+
+<div class="content-body"><!--*ngIf="user.Profil==1"-->
+    <a href="javascript:history.back()" class="btn btn-outline-dark h3 fw-bold me-2 mt-2 offset-1">
+        <i class="fas fa-arrow-left me-2"></i> Retour
+    </a>
+    
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2 class="mb-0">RÉPUBLIQUE DU SÉNÉGAL</h2>
+                
+                <h4 class="mb-1">Un Peuple – Un But – Une Foi</h4>
+                <h3 class="mb-0">CERTIFICAT DE DÉCLARATION DE PERTE</h3>
+            </div>
+            <div class="card-body">
+                <p>Je soussigné(e) : <strong>[Nom et Prénom]</strong></p>
+                <p>Né(e) le : <strong>[Date de naissance]</strong></p>
+                <p>À : <strong>[Lieu de naissance]</strong></p>
+                <p>De nationalité : <strong>[Nationalité]</strong></p>
+                <p>Demeurant à : <strong>[Adresse complète]</strong></p>
+
+                <p>Déclare avoir perdu les documents suivants :</p>
+                <ul class="list-unstyled">
+                    <li><strong>[Détail du document perdu (ex. : Carte d'identité nationale, Passeport, Permis de conduire, etc.)]</strong></li>
+                    <li><strong>[Détail du document perdu (si plusieurs)]</strong></li>
+                </ul>
+
+                <p>Les faits se sont produits le : <strong>[Date de la perte]</strong></p>
+                <p>À : <strong>[Lieu de la perte]</strong></p>
+
+                <p>Je certifie que cette déclaration est exacte et sincère.</p>
+
+                <div class="mt-4">
+                    <p>Fait à : <strong>[Ville de déclaration]</strong></p>
+                    <p>Le : <strong>[Date de la déclaration]</strong></p>
+                    <p>Signature de la personne ayant déclaré la perte :</p>
+                    <p class="border-bottom" style="height: 40px;">_______________________________</p>
+                    <p class="mt-3">Vu par l’autorité compétente,</p>
+                    <p><strong>[Nom et Prénom de l’agent]</strong></p>
+                    <p>Fonction : <strong>[Fonction de l’agent]</strong></p>
+                    <p>Date : <strong>[Date]</strong></p>
+                    <p>Signature de l’autorité compétente :</p>
+                    <p class="border-bottom" style="height: 40px;">_______________________________</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-success mt-2 mb-2 offset-11">Signer</button>
+        <button class="btn btn-warning mt-2 mb-2 offset-11" data-bs-toggle="modal" data-bs-target="#addProjectSidebar">Modifier</button>
+        
+         
+    </div>
+   
+</div>
+
+<!-- *ngIf="tabBurger.length==0" -->
+<!-- <div class="container-fluid d-flex align-items-start justify-content-center min-vh-100">
+    <div class="text-center mt-5">
+        <div class="card" style="width: 300px;">
+            <div class="card-body box-style">
+                <h2>Aucun élément n'a été trouvé</h2>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="modal fade" id="addProjectSidebar">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Formulaire Modification d'information</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <!-- Colonne gauche -->
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Prenom Declarant</label>
+                                <input type="text" formControlName="PrenomD" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Date Naissance</label>
+                                <input type="date" formControlName="DateNaiss" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Numero Tel</label>
+                                <input type="number" formControlName="NumTel" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Email</label>
+                                <input type="email" formControlName="Email" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Date estime du perte</label>
+                                <input type="date" formControlName="DatePerte" class="form-control">
+                            </div>
+                        </div>
+                        <!-- Colonne droite -->
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Nom Declarant</label>
+                                <input type="text" formControlName="NomD" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Lieu de Naissance</label>
+                                <input type="text" formControlName="LieuNaissance" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Adresse</label>
+                                <input type="text" formControlName="Adresse" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Type Piece perdue</label>
+                                <select class="form-control" formControlName="TypePiecePerdue">
+                                    <option value="">--Selectionner--</option>
+                                    <option value="Carte d'identitee">Carte d'identitee</option>
+                                    <option value="Passeport">Passeport</option>
+                                    <option value="Carte bancaire">Carte bancaire</option>
+                                    <option value="Permis de conduire">Permis de conduire</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="text-black font-w500">Lieu estime du perte</label>
+                                <input type="text" formControlName="LieuPerte" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Confirmer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

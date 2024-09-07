@@ -1,0 +1,242 @@
+<div class="content-body"><!--*ngIf="user.Profil==1"-->
+    <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar" class="btn btn-success me-2 mt-2 offset-1"><i></i> Ajouter ➕</button>
+    <div class="container-fluid">
+        <div class="row g-4" >
+            <!-- Première carte -->
+                <div class="col-xl-4 col-xxl-4 col-lg-4 col-sm-12 mb-4">   <!--*ngIf="tabBurger.length==0" -->
+              <div class="card card-bd" style="width: 440px;">
+                <div class="card-body box-style">
+                  <div class="media align-items-center">
+                    <div class="media-body me-3">
+                      <!-- <h6 class="count num-text text-black font-w700">Piece retrouvee</h6> -->
+                       <h4>Piece Perdue</h4>
+
+                      <span class="fs-14">Prenom : Moustapha</span><br>
+                      <span class="fs-14">Nom proprietaire : Diagne</span>
+                      <br>
+                      <span class="fs-14">Date Supposee du perte : </span>
+                      <br>
+                      <span class="fs-14">Structure : </span>
+                        <br>
+
+                        <div class="mt-3">
+                            <!-- <input type="number" hidden [value]="burger.id" #idBurger>
+                            <input type="number" hidden [value]="user.id" #idUser>
+                            <button [formGroup]="Commande" (click)="Commander(idBurger.valueAsNumber,idUser.valueAsNumber)" class="btn btn-primary me-2">
+                                <i class="fas fa-shopping-cart"></i> Commander
+                            </button>
+                            <button routerLink="DetailleDeclaration" class="btn btn-secondary btn-sm mt-2">
+                                <i class="fas fa-eye"></i> Detaille
+                            </button>-->
+                            <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar2" class="btn btn-warning btn-sm" style="margin-right: 7px;">
+                                <i>📝</i> Modifier
+                            </button>
+                            <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar3" class="btn btn-secondary btn-sm" style="margin-right: 7px;">
+                                <i class="fas fa-eye"></i> Detaille
+                            </button>
+                            <button  class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </button>
+                        </div> 
+                    </div>
+                    
+                  </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+
+
+
+<!-- Ajout -->
+<div class="modal fade" id="addProjectSidebar">
+    <div class="modal-dialog modal-lg" role="document"> <!-- Utilisez modal-lg pour un modal large -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Déclaration de pièce Perdue</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <!-- Colonne Gauche -->
+                        <div class="col-md-6">
+                          <div class="form-group mb-3">
+                            <label class="text-black font-w500">Type Piece perdue</label>
+                            <select class="form-control" formControlName="TypePiecePerdue">
+                                <option value="">--Selectionner--</option>
+                                <option value="Carte d'identitee">Carte d'identitee</option>
+                                <option value="Passeport">Passeport</option>
+                                <option value="Carte bancaire">Carte bancaire</option>
+                                <option value="Permis de conduire">Permis de conduire</option>
+                            </select>
+                        </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Prénom Propriétaire</label>
+                                <input type="text" formControlName="Prenom Proprietaire" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Nom Propriétaire</label>
+                                <input type="text" formControlName="Nom Proprietaire" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Email Déclarant</label>
+                                <input type="email" formControlName="Email" class="form-control">
+                            </div>
+                        </div>
+                        <!-- Colonne Droite -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-black font-w500">Lieu suppose du perte</label>
+                                <input type="text" formControlName="Lieu" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Date suppose du perte</label>
+                                <input type="date" formControlName="DateR" class="form-control">
+                            </div>
+                            <div class="form-group" hidden>
+                                <label class="text-black font-w500">Date declaration</label>
+                                <input type="date" id="Date" formControlName="Date"  [value]="today" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Date declaration</label>
+                                <input type="date" id="Date" disabled formControlName="Date"  [value]="today" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-1">
+                        <button type="submit" class="btn btn-success offset-11" data-bs-dismiss="modal">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- detaille -->
+<div class="modal fade" id="addProjectSidebar3">
+    <div class="modal-dialog modal-lg" role="document"> <!-- Utilisez modal-lg pour un modal large -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Detaille de la déclaration de pièce Perdue</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                    <div class="row">
+                        <!-- Colonne Gauche -->
+                        <div class="col-md-6">
+                          <div class="form-group mb-3">
+                            <label class="text-black font-w500">Type Piece perdue</label><br>
+                            <!-- <select class="form-control" formControlName="TypePiecePerdue">
+                                <option value="">--Selectionner--</option>
+                                <option value="Carte d'identitee">Carte d'identitee</option>
+                                <option value="Passeport">Passeport</option>
+                                <option value="Carte bancaire">Carte bancaire</option>
+                                <option value="Permis de conduire">Permis de conduire</option>
+                            </select> -->
+                            <span>Carte Bancaire</span>
+                        </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Prénom Propriétaire</label><br>
+                                <span>Moustapha</span>
+                                <!-- <input type="text" formControlName="Prenom Proprietaire" class="form-control"> -->
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Nom Propriétaire</label><br>
+                                <span>Borom fouki penc  ak niarr yii</span>
+                                <!-- <input type="text" formControlName="Nom Proprietaire" class="form-control"> -->
+                            </div>
+                            
+                        </div>
+                        <!-- Colonne Droite -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-black font-w500">Lieu suppose du perte</label><br>
+                                <span>Guinaw guedj</span>
+                                <!-- <input type="text" formControlName="Lieu" class="form-control"> -->
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Date suppose du perte</label><br>
+                                <span>si mbed mbii</span>
+                                <!-- <input type="date" formControlName="DateR" class="form-control"> -->
+                            </div>
+                            <div class="form-group" hidden>
+                                <label class="text-black font-w500">Date declaration</label><br>
+                                <span>18/11/2002</span>
+                                <!-- <input type="date" id="Date" formControlName="Date"  [value]="today" class="form-control"> -->
+                            </div>
+                           <div class="form-group">
+                                <label class="text-black font-w500">Email Déclarant</label><br>
+                                <span>KherrouGuedj@gmail.com</span>
+                                <!-- <input type="email" formControlName="Email" class="form-control"> -->
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modifier -->
+<div class="modal fade" id="addProjectSidebar2">
+    <div class="modal-dialog modal-lg" role="document"> <!-- Utilisez modal-lg pour un modal large -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Modifier déclaration de pièce Perdue</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <!-- Colonne Gauche -->
+                        <div class="col-md-6">
+                          <div class="form-group mb-3">
+                            <label class="text-black font-w500">Type Piece perdue</label>
+                            <select class="form-control" formControlName="TypePiecePerdue">
+                                <option value="">--Selectionner--</option>
+                                <option value="Carte d'identitee">Carte d'identitee</option>
+                                <option value="Passeport">Passeport</option>
+                                <option value="Carte bancaire">Carte bancaire</option>
+                                <option value="Permis de conduire">Permis de conduire</option>
+                            </select>
+                        </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Prénom Propriétaire</label>
+                                <input type="text" formControlName="Prenom Proprietaire" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Nom Propriétaire</label>
+                                <input type="text" formControlName="Nom Proprietaire" class="form-control">
+                            </div>
+                            
+                        </div>
+                        <!-- Colonne Droite -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-black font-w500">Lieu suppose du perte</label>
+                                <input type="text" formControlName="Lieu" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black font-w500">Date suppose du perte</label>
+                                <input type="date" formControlName="DateR" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-black font-w500">Email Déclarant</label>
+                                <input type="email" formControlName="Email" class="form-control">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group mt-1">
+                        <button type="submit" class="btn btn-success offset-11" data-bs-dismiss="modal">Modifier</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  

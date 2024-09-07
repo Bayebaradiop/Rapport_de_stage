@@ -1,0 +1,62 @@
+<div class="content-body"><!--*ngIf="user.Profil==1"-->
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="date">Type de la piece</label>
+            <select class="form-control" formControlName="TypePiecePerdue">
+                <option value="">--Selectionner--</option>
+                <option value="Carte d'identitee">Carte d'identitee</option>
+                <option value="Passeport">Passeport</option>
+                <option value="Carte bancaire">Carte bancaire</option>
+                <option value="Permis de conduire">Permis de conduire</option>
+            </select>
+          </div>
+          <!-- <div class="col-md-3">
+            <label for="lieu">Lieu</label>
+            <input type="text" id="lieu" class="form-control" >
+          </div> -->
+          <div class="col-md-2">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" class="form-control">
+          </div>
+          <div class="col-md-2">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" class="form-control" >
+          </div>
+          <div class="col-md-2 d-flex align-items-end">
+            <button class="btn btn-primary" >Appliquer le filtre</button>
+          </div>
+        </div>
+      </div>
+    <div class="container-fluid">
+        
+        <div class="row g-4" >
+              
+            <!-- Première carte -->
+                <div class="col-xl-4 col-xxl-4 col-lg-4 col-sm-12 mb-4">   <!--*ngIf="tabBurger.length==0" -->
+              <div class="card card-bd" style="width: 300px;">
+                <div class="card-body box-style">
+                  <div class="media align-items-center">
+                    <div class="media-body me-3">
+                      <!-- <h6 class="count num-text text-black font-w700">Piece retrouvee</h6> -->
+                       <h4>Piece retrouvee</h4>
+
+                      <span class="fs-14">Prenom : Moustapha</span><br>
+                      <span class="fs-14">Nom proprietaire : Diagne</span>
+                      <br>
+                      <span class="fs-14">Type de la piece : </span>
+                      <br>
+                      <span class="fs-14">Structure : </span>
+                        <br>
+
+                        </div> 
+                    </div>
+                    
+                  </div>
+                </div>
+            </div>
+         </div>
+                
+
+    </div>
+</div>

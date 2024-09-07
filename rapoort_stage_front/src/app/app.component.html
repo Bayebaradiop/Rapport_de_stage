@@ -1,0 +1,79 @@
+  <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper" *ngIf="!isSingInPage && !isSingUpPage">
+
+      <!--**********************************
+          Nav header start
+      ***********************************-->
+      <div class="nav-header">
+          <a href="#" class="brand-logo">
+              <i class="logo-abbr fa-brands fa-stumbleupon"></i>
+        
+      <h2 class="brand-title">Admin</h2>
+          </a>
+
+          <div class="nav-control">
+              <div class="hamburger">
+                  <span class="line"></span><span class="line"></span><span class="line"></span>
+              </div>
+          </div>
+      </div>
+      <!--**********************************
+          Nav header end
+      ***********************************-->
+  
+      <app-header></app-header>
+  
+
+      <app-side-bar></app-side-bar>
+
+      <div *ngIf="isDeclaration">
+        <app-declaration></app-declaration>
+      </div>
+      
+      <div *ngIf="!isDeclaration && !isGestAgnt && !isDemande && !isDetaille && !isCertificatDetaille && !ISlost && !IsFind && !ISPerteByUser">
+        <app-dashboard></app-dashboard>
+      </div>
+      <div *ngIf="isGestAgnt">
+        <app-gestion-agent></app-gestion-agent>
+      </div>
+      <div *ngIf="isDemande">
+        <app-demande></app-demande>
+      </div>
+      <div *ngIf="isDetaille">
+        <app-detaille-declaration></app-detaille-declaration>
+      </div>
+      <div *ngIf="isCertificatDetaille">
+        <app-detaille-certificat></app-detaille-certificat>
+      </div>
+      <div *ngIf="IsFind">
+        <app-pieces-trouvees></app-pieces-trouvees>
+      </div>
+      <div *ngIf="ISlost">
+        <app-piece-perdue></app-piece-perdue>
+      </div>
+      <div *ngIf="ISPerteByUser">
+        <app-piece-perdu-by-person></app-piece-perdu-by-person>
+      </div>
+
+
+      <app-footer></app-footer>
+
+
+</div>
+  <!--**********************************
+      Main wrapper end
+  ***********************************-->   
+
+
+
+
+  <div *ngIf="isSingInPage"> 
+    <app-inscription></app-inscription>
+  </div>
+
+  <div *ngIf="isSingUpPage">
+    <app-login></app-login>
+  </div>
+  

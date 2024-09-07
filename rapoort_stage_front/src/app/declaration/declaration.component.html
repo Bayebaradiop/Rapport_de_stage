@@ -1,0 +1,215 @@
+<div class="content-body"><!--*ngIf="user.Profil==1"-->
+    <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar" class="btn btn-success me-2 mt-2 offset-1"><i></i> Ajouter ➕</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="date">Type de la piece</label>
+          <select class="form-control" formControlName="TypePiecePerdue">
+            <option value="">--Selectionner--</option>
+            <option value="Carte d'identitee">Carte d'identitee</option>
+            <option value="Passeport">Passeport</option>
+            <option value="Carte bancaire">Carte bancaire</option>
+            <option value="Permis de conduire">Permis de conduire</option>
+        </select>
+        </div>
+        <!-- <div class="col-md-3">
+          <label for="lieu">Lieu</label>
+          <input type="text" id="lieu" class="form-control" >
+        </div> -->
+        <div class="col-md-2">
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" class="form-control" >
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-primary" >Appliquer le filtre</button>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row g-4" >
+          <!-- Première carte -->
+              <div class="col-xl-4 col-xxl-4 col-lg-4 col-sm-12 mb-4">   <!--*ngIf="tabBurger.length==0" -->
+            <div class="card card-bd" style="width: 450px;">
+              <div class="card-body box-style">
+                <div class="media align-items-center">
+                  <div class="media-body me-3">
+                    <!-- <h6 class="count num-text text-black font-w700">Piece retrouvee</h6> -->
+                     <h4>Piece retrouvee</h4>
+
+                    <span class="fs-14">Prenom : Moustapha</span>
+                    <br>
+                    <span class="fs-14">Nom proprietaire : Diagne</span>
+                    <br>
+                    <span class="fs-14">Type de la piece : </span>
+                    <br>
+                    <span class="fs-14">Date ramassage : </span>
+                    <br>
+                    <span class="fs-14">Lieu ramassage : </span>
+                    <br>
+                    <span class="fs-14">Date Declaration : </span>
+                    <br>
+                    <span class="fs-14">Structure : </span>
+                    <br>
+
+                      <div class="mt-3">
+                           <!--<input type="number" hidden [value]="burger.id" #idBurger>
+                          <input type="number" hidden [value]="user.id" #idUser>
+                          <button [formGroup]="Commande" (click)="Commander(idBurger.valueAsNumber,idUser.valueAsNumber)" class="btn btn-primary me-2">
+                              <i class="fas fa-shopping-cart"></i> Commander
+                          </button>-->
+                          <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar2" class="btn btn-secondary btn-sm" style="margin-right: 7px;">
+                              <i class="fas fa-eye"></i> Modifier
+                          </button>
+                          <button  class="btn btn-success btn-sm" style="margin-right: 7px;">
+                              <i>✔</i> Remis
+                          </button>
+                          <button  class="btn btn-danger btn-sm">
+                              <i class="fas fa-trash"></i> Supprimer
+                          </button>
+                      </div> 
+                  </div>
+                  
+                </div>
+              </div>
+          </div>
+       </div>
+  </div>
+</div>
+<div class="modal fade" id="addProjectSidebar2">
+  <div class="modal-dialog modal-lg" role="document"> <!-- Utilisez modal-lg pour un modal large -->
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title">Modifier déclaration de pièces trouvées</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+              <form action="">
+                  <div class="row">
+                      <!-- Colonne Gauche -->
+                      <div class="col-md-6">
+                        <div class="form-group mb-3">
+                          <label class="text-black font-w500">Type Piece perdue</label>
+                          <select class="form-control" formControlName="TypePiecePerdue">
+                              <option value="">--Selectionner--</option>
+                              <option value="Carte d'identitee">Carte d'identitee</option>
+                              <option value="Passeport">Passeport</option>
+                              <option value="Carte bancaire">Carte bancaire</option>
+                              <option value="Permis de conduire">Permis de conduire</option>
+                          </select>
+                      </div>
+                          <div class="form-group">
+                              <label class="text-black font-w500">Prénom Propriétaire</label>
+                              <input type="text" formControlName="Prenom Proprietaire" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label class="text-black font-w500">Nom Propriétaire</label>
+                              <input type="text" formControlName="Nom Proprietaire" class="form-control">
+                          </div>
+                         
+                      </div>
+                      <!-- Colonne Droite -->
+                      <div class="col-md-6">
+                          <div class="form-group">  
+                          <div class="form-group">
+                              <label class="text-black font-w500">Email Déclarant</label>
+                              <input type="email" formControlName="Email" class="form-control">
+                          </div>
+                              <label class="text-black font-w500">Lieu de ramassage</label>
+                              <input type="text" formControlName="Lieu" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label class="text-black font-w500">Date de ramassage</label>
+                              <input type="date" formControlName="DateR" class="form-control">
+                          </div>
+                          <!-- <div class="form-group">
+                              <label class="text-black font-w500">Date</label>
+                              <input type="date" formControlName="Date" class="form-control">
+                          </div> -->
+                      </div>
+                  </div>
+                  <div class="form-group mt-3">
+                      <button type="submit" class="btn btn-success offset-10" data-bs-dismiss="modal">Confirmer</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- *ngIf="tabBurger.length==0" -->
+<!-- <div class="container-fluid d-flex align-items-start justify-content-center min-vh-100">
+    <div class="text-center mt-5">
+        <div class="card" style="width: 300px;">
+            <div class="card-body box-style">
+                <h2>Aucun élément n'a été trouvé</h2>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="modal fade" id="addProjectSidebar">
+  <div class="modal-dialog modal-lg" role="document"> <!-- Utilisez modal-lg pour un modal large -->
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title">Déclaration de pièces trouvées</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+              <form action="">
+                  <div class="row">
+                      <!-- Colonne Gauche -->
+                      <div class="col-md-6">
+                        <div class="form-group mb-3">
+                          <label class="text-black font-w500">Type Piece perdue</label>
+                          <select class="form-control" formControlName="TypePiecePerdue">
+                              <option value="">--Selectionner--</option>
+                              <option value="Carte d'identitee">Carte d'identitee</option>
+                              <option value="Passeport">Passeport</option>
+                              <option value="Carte bancaire">Carte bancaire</option>
+                              <option value="Permis de conduire">Permis de conduire</option>
+                          </select>
+                      </div>
+                          <div class="form-group">
+                              <label class="text-black font-w500">Prénom Propriétaire</label>
+                              <input type="text" formControlName="Prenom Proprietaire" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label class="text-black font-w500">Nom Propriétaire</label>
+                              <input type="text" formControlName="Nom Proprietaire" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label class="text-black font-w500">Email Déclarant</label>
+                              <input type="email" formControlName="Email" class="form-control">
+                          </div>
+                      </div>
+                      <!-- Colonne Droite -->
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label class="text-black font-w500">Lieu de ramassage</label>
+                              <input type="text" formControlName="Lieu" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label class="text-black font-w500">Date de ramassage</label>
+                              <input type="date" formControlName="DateR" class="form-control">
+                          </div>
+                          <div class="form-group" hidden>
+                              <label class="text-black font-w500">Date</label>
+                              <input type="date" formControlName="Date" [value]="today" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label class="text-black font-w500">Date</label>
+                              <input type="date" formControlName="Date" disabled [value]="today" class="form-control">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group mt-3">
+                      <button type="submit" class="btn btn-success offset-11" data-bs-dismiss="modal">Ajouter</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
