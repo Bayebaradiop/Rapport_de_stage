@@ -17,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('login');
+
+    Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('login');
 
 
 Route::middleware('auth:api')
     ->group(function (){
+        Route::post('/tests', [\App\Http\Controllers\Api\DeclarationController::class, 'store']);
+        Route::get('/tests', [\App\Http\Controllers\Api\DeclarationController::class, 'index']); // Lister tous les enregistrements
         Route::post('/logout',[\App\Http\Controllers\Api\AuthController::class,'logout'])->name('logout');        
     });
 

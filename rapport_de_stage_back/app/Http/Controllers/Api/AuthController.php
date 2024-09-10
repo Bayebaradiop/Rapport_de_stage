@@ -44,7 +44,6 @@ class Authcontroller extends Controller
             "message" =>  "user logout !"
         ]);
     }
-
     public  function refresh()
     {
         $newToken = auth()->refresh();

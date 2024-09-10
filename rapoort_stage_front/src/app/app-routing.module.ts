@@ -13,7 +13,6 @@ import { PiecesTrouveesComponent } from './pieces-trouvees/pieces-trouvees.compo
 import { PiecePerdueComponent } from './piece-perdue/piece-perdue.component';
 import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu-by-person.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginGuardGuard } from './login-guard.guard'; // Importer la guard
 
 const routes: Routes = [
   { path: 'Inscription', component: InscriptionComponent},
