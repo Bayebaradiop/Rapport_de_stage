@@ -16,10 +16,12 @@ return new class extends Migration
             $table->string('nomProprietaire');
             $table->string('prenomProprietaire');
             $table->string('typePiece');
+            $table->string('lieu');
             $table->string('email')->unique();
             $table->string('structureDeclarer');
             $table->string('etat')->default(1);//par defaut 1:trouver -1:perdue 0:rendue
-            $table->dateTime('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('date_declarer')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('date_ramassage');
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 <div class="content-body"><!--*ngIf="user.Profil==1"-->
-    <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar" class="btn btn-success me-2 mt-2 offset-1"><i></i> Ajouter ➕</button>
+    <button (click)="showModal1 = true" data-bs-toggle="modal" data-bs-target="#addProjectSidebar" class="btn btn-success me-2 mt-2 offset-1"><i></i> Ajouter ➕</button>
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -32,28 +32,27 @@
     <div class="container-fluid">
       <div class="row g-4" >
           <!-- Première carte -->
-              <div class="col-xl-4 col-xxl-4 col-lg-4 col-sm-12 mb-4">   <!--*ngIf="tabBurger.length==0" -->
+              <div class="col-xl-4 col-xxl-4 col-lg-4 col-sm-12 mb-4" *ngFor="let declaration of declarations">   <!--*ngIf="tabBurger.length==0" -->
             <div class="card card-bd" style="width: 450px;">
               <div class="card-body box-style">
                 <div class="media align-items-center">
                   <div class="media-body me-3">
                     <!-- <h6 class="count num-text text-black font-w700">Piece retrouvee</h6> -->
                      <h4>Piece retrouvee</h4>
-
-                    <span class="fs-14">Prenom : Bara</span>
-                    <br>
-                    <span class="fs-14">Nom proprietaire : Diop</span>
-                    <br>
-                    <span class="fs-14">Type de la piece :passport </span>
-                    <br>
-                    <span class="fs-14">Date ramassage : 03/09/2024</span>
-                    <br>
-                    <span class="fs-14">Lieu ramassage :Touba </span>
-                    <br>
-                    <span class="fs-14">Date Declaration :03/09/2024 </span>
-                    <br>
-                    <span class="fs-14">Structure : police dianatou</span>
-                    <br>
+                     <span class="fs-14">Prenom : {{declaration.prenomProprietaire}}</span>
+                     <br>
+                     <span class="fs-14">Nom proprietaire : {{declaration.nomProprietaire}}</span>
+                     <br>
+                     <span class="fs-14">Type de la piece : {{declaration.typePiece}}</span>
+                     <br>
+                     <span class="fs-14">Date ramassage :{{declaration.date_ramassage}} </span>
+                     <br>
+                     <span class="fs-14">Lieu ramassage :{{declaration.lieu}} </span>
+                     <br>
+                     <span class="fs-14">Date Declaration :{{declaration.date_declarer}} </span>
+                     <br>
+                     <span class="fs-14">Structure :{{declaration.structureDeclarer}} </span>
+                     <br>
 
                       <div class="mt-3">
                            <!--<input type="number" hidden [value]="burger.id" #idBurger>
@@ -61,7 +60,7 @@
                           <button [formGroup]="Commande" (click)="Commander(idBurger.valueAsNumber,idUser.valueAsNumber)" class="btn btn-primary me-2">
                               <i class="fas fa-shopping-cart"></i> Commander
                           </button>-->
-                          <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar2" class="btn btn-secondary btn-sm" style="margin-right: 7px;">
+                          <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar2" class="btn btn-secondary btn-sm" style="margin-right: 7px;"  (click)="showModal2 = true">
                               <i class="fas fa-eye"></i> Modifier
                           </button>
                           <button  class="btn btn-success btn-sm" style="margin-right: 7px;">
@@ -79,8 +78,7 @@
        </div>
   </div>
 </div>
-
-<div class="modal fade" id="addProjectSidebar2">
+<div class="modal fade" id="addProjectSidebar2" *ngIf="showModal2">
   <div class="modal-dialog modal-lg" role="document"> <!-- Utilisez modal-lg pour un modal large -->
       <div class="modal-content">
           <div class="modal-header">
@@ -133,7 +131,7 @@
                       </div>
                   </div>
                   <div class="form-group mt-3">
-                      <button type="submit" class="btn btn-success offset-10" data-bs-dismiss="modal">Confirmer</button>
+                      <button  type="submit" class="btn btn-success offset-10" data-bs-dismiss="modal" (click)="showModal2 = false">Confirmer</button>
                   </div>
               </form>
           </div>
@@ -151,7 +149,7 @@
     </div>
 </div> -->
 
-<div class="modal fade" id="addProjectSidebar">
+<div class="modal fade" id="addProjectSidebar"  *ngIf="showModal1">
   <div class="modal-dialog modal-lg" role="document"> <!-- Utilisez modal-lg pour un modal large -->
       <div class="modal-content">
           <div class="modal-header">
@@ -198,16 +196,16 @@
                           </div>
                           <div class="form-group" hidden>
                               <label class="text-black font-w500">Date</label>
-                              <input type="date" formControlName="Date" [value]="today" class="form-control">
+                              <input type="date" formControlName="Date"  class="form-control">
                           </div>
                           <div class="form-group">
                               <label class="text-black font-w500">Date</label>
-                              <input type="date" formControlName="Date"  [value]="today" class="form-control">
+                              <input type="date" formControlName="Date"   class="form-control">
                           </div>
                       </div>
                   </div>
                   <div class="form-group mt-3">
-                      <button type="submit" class="btn btn-success offset-11" data-bs-dismiss="modal">Ajouter</button>
+                      <button type="submit" class="btn btn-success offset-11" data-bs-dismiss="modal" (click)="showModal1 = false">Ajouter</button>
                   </div>
               </form>
           </div>

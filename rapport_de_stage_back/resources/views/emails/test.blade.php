@@ -13,7 +13,9 @@
         <li>Type de pièce : {{ $declaration->typePiece }}</li>
         <li>Email : {{ $declaration->email }}</li>
         <li>Structure déclarée : {{ $declaration->structureDeclarer }}</li>
-        <li>Date : {{ $declaration->date }}</li>
+        <li>Structure déclarée : {{ $declaration->lieu }}</li>
+        <li>ramasser le: {{ $declaration->date_ramassage }}</li>
+        <li>declarer le: {{ $declaration->date_declarer }}</li>
     </ul>
 </body>
 </html>

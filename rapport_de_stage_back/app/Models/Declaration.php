@@ -12,11 +12,13 @@ class Declaration extends Model
     protected $fillable = [
         'nomProprietaire',
         'prenomProprietaire',
+        'lieu',
         'typePiece',
         	'email',
           'structureDeclarer',
             'etat',
-              'date',
+              'date_declarer',
+              'date_ramassage',
     ];
 
 }

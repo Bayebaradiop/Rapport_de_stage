@@ -32,10 +32,16 @@ class DeclarationController extends Controller
         $validated = $request->validate([
             'nomProprietaire' => 'required|string|max:255',
             'prenomProprietaire' => 'required|string|max:255',
+            'lieu' => 'required|string|max:255',
             'typePiece' => 'required|string|max:255',
             'email' => 'required|email|unique:declarations,email',
+            'date_ramassage' => 'required|date',
+
+            
         ]);
 
+    
+            
         $user = Auth::user();
 
         $structureDeclarer = $user ? $user->structure : 'default_structure'; // Remplace 'default_structure' si nécessaire
@@ -43,11 +49,13 @@ class DeclarationController extends Controller
         // Création de la déclaration
         $declaration = new Declaration();
         $declaration->nomProprietaire = $validated['nomProprietaire'];
+        $declaration->  lieu = $validated['lieu'];
         $declaration->prenomProprietaire = $validated['prenomProprietaire'];
-        $declaration->typePiece = $validated['typePiece'];
+        $declaration->typePiece = $validated['typePiece'];                
         $declaration->email = $validated['email'];
         $declaration->structureDeclarer = $structureDeclarer;
-        $declaration->date = now(); 
+        $declaration->date_declarer = now(); 
+        $declaration->date_ramassage = $validated['date_ramassage']; // Correction ici
         $declaration->save();
 
         Mail::send('emails.test', ['nom' => $declaration->nomProprietaire, 'declaration' => $declaration], function ($message) use ($declaration) {
