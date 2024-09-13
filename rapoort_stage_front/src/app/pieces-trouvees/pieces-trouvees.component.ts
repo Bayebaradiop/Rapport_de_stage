@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DeclarationService } from 'src/app/core/services/declaration.service';
 import { Declaration } from '../core/model/declaration.model';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-pieces-trouvees',
@@ -20,10 +19,23 @@ export class PiecesTrouveesComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    const currentDate = new Date();
-    this.today = currentDate.toISOString().split('T')[0];
+    this.getDec();
   }
 
+
+
+  getDec(): void {
+    this.declarationService.getall().subscribe({
+      next: (data: Declaration[]) => {
+        this.declarations = data;
+        console.log('Déclarations récupérées:', this.declarations); 
+      },
+      error: (error: any) => { 
+        this.errorMessage = 'Erreur lors du chargement des déclarations.';
+        console.error('Erreur:', error);
+      }
+    });
+  }
  
   
 

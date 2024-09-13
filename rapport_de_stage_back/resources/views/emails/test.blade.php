@@ -11,9 +11,8 @@
         <li>Nom du propriétaire : {{ $declaration->nomProprietaire }}</li>
         <li>Prénom du propriétaire : {{ $declaration->prenomProprietaire }}</li>
         <li>Type de pièce : {{ $declaration->typePiece }}</li>
-        <li>Email : {{ $declaration->email }}</li>
         <li>Structure déclarée : {{ $declaration->structureDeclarer }}</li>
-        <li>Structure déclarée : {{ $declaration->lieu }}</li>
+        <li>Lieu : {{ $declaration->lieu }}</li>
         <li>ramasser le: {{ $declaration->date_ramassage }}</li>
         <li>declarer le: {{ $declaration->date_declarer }}</li>
     </ul>

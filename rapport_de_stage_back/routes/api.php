@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('login');
-
+Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register'])->name('register');
 
 Route::middleware('auth:api')
     ->group(function (){
-        Route::post('/logout',[\App\Http\Controllers\Api\AuthController::class,'logout'])->name('logout');        
+        Route::post('/logout',[\App\Http\Controllers\Api\AuthController::class,'logout'])->name('logout');
+        Route::delete('/declarations/{id}', [\App\Http\Controllers\Api\DeclarationController::class, 'destroy']);
+        Route::post('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'store']);
+        Route::get('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'index']);    
     });
-
-    Route::post('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'store']);
-    Route::get('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'index']); //

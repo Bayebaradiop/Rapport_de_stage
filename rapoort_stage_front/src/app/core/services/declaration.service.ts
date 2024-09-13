@@ -36,8 +36,21 @@ export class DeclarationService {
         const headers=this.getAuthHeaders();
     return this.http.get<Declaration[]>(`${environnement.ApiUrl}/declarations`, {headers,});
   }
+  
+  
+  addDeclaration(declaration: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${environnement.ApiUrl}/declarations`, declaration, { headers });
+  }
+  
 
 
+  deleteDeclaration(id: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.delete(`${environnement.ApiUrl}/declarations/${id}`, { headers });
+  }
 
+
+  
   
 }

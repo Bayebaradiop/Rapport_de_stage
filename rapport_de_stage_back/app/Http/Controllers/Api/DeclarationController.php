@@ -72,7 +72,15 @@ class DeclarationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Récupération d'une déclaration par ID
+        $declaration = Declaration::find($id);
+
+        if (!$declaration) {
+            return response()->json(['message' => 'Déclaration non trouvée.'], 404);
+        }
+
+        // Retourne la déclaration en JSON
+        return response()->json($declaration);
     }
 
     /**
@@ -80,7 +88,27 @@ class DeclarationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validation des données mises à jour
+        $validated = $request->validate([
+            'nomProprietaire' => 'sometimes|string|max:255',
+            'prenomProprietaire' => 'sometimes|string|max:255',
+            'lieu' => 'sometimes|string|max:255',
+            'typePiece' => 'sometimes|string|max:255',
+            'email' => 'sometimes|email|unique:declarations,email,' . $id,
+            'date_ramassage' => 'sometimes|date',
+        ]);
+
+        // Récupération de la déclaration à mettre à jour
+        $declaration = Declaration::find($id);
+
+        if (!$declaration) {
+            return response()->json(['message' => 'Déclaration non trouvée.'], 404);
+        }
+
+        // Mise à jour des champs
+        $declaration->update($validated);
+
+        return response()->json(['message' => 'Déclaration mise à jour avec succès.']);
     }
 
     /**
@@ -88,6 +116,16 @@ class DeclarationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Récupération de la déclaration à supprimer
+        $declaration = Declaration::find($id);
+
+        if (!$declaration) {
+            return response()->json(['message' => 'Déclaration non trouvée.'], 404);
+        }
+
+        // Suppression de la déclaration
+        $declaration->delete();
+
+        return response()->json(['message' => 'Déclaration supprimée avec succès.']);
     }
 }

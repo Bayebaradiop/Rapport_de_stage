@@ -33,7 +33,7 @@
       <div class="row g-4" >
             
           <!-- Première carte -->
-              <div class="col-xl-4 col-xxl-4 col-lg-4 col-sm-12 mb-4">   <!--*ngIf="tabBurger.length==0" -->
+              <div class="col-xl-4 col-xxl-4 col-lg-4 col-sm-12 mb-4" *ngFor="let declaration of declarations">   <!--*ngIf="tabBurger.length==0" -->
             <div class="card card-bd" style="width: 300px;">
               <div class="card-body box-style">
                 <div class="media align-items-center">
@@ -41,12 +41,18 @@
                     <!-- <h6 class="count num-text text-black font-w700">Piece retrouvee</h6> -->
                      <h4>Piece retrouvee</h4>
 
-                    <span class="fs-14">Prenom : Moustapha</span><br>
-                    <span class="fs-14">Nom proprietaire : Diagne</span>
+                    <span class="fs-14">Prenom : {{declaration.prenomProprietaire}}</span><br>
+                    <span class="fs-14">Nom proprietaire :{{declaration.nomProprietaire}}</span>
                     <br>
-                    <span class="fs-14">Type de la piece : </span>
+                    <span class="fs-14">Type de la piece :{{declaration.typePiece}} </span>
                     <br>
-                    <span class="fs-14">Structure : </span>
+                    <span class="fs-14">Date ramassage :{{declaration.date_ramassage}} </span>
+                    <br>
+                    <span class="fs-14">Lieu ramassage :{{declaration.lieu}} </span>
+                    <br>
+                    <span class="fs-14">Date Declaration :{{declaration.date_declarer}} </span>
+                    <br>
+                    <span class="fs-14">Structure:{{declaration.structureDeclarer}} </span>
                       <br>
 
                       </div> 
