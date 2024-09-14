@@ -36,6 +36,13 @@ export class DeclarationService {
         const headers=this.getAuthHeaders();
     return this.http.get<Declaration[]>(`${environnement.ApiUrl}/declarations`, {headers,});
   }
+
+  getallbystruc():Observable<Declaration[]>{
+    const headers=this.getAuthHeaders();
+return this.http.get<Declaration[]>(`${environnement.ApiUrl}/declarationsbystruc`, {headers,});
+}
+
+ 
   
   
   addDeclaration(declaration: any): Observable<any> {

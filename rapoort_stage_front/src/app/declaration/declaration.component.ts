@@ -30,7 +30,7 @@ export class DeclarationComponent implements OnInit {
   }
 
   getDec(): void {
-    this.declarationService.getall().subscribe({
+    this.declarationService.getallbystruc().subscribe({
       next: (data: Declaration[]) => {
         this.declarations = data;
         console.log('Déclarations récupérées:', this.declarations); 
@@ -85,7 +85,7 @@ export class DeclarationComponent implements OnInit {
 
 applyFilter(): void {
   const filterValues = this.filterForm.value;
-  this.declarationService.getall().subscribe({
+  this.declarationService.getallbystruc().subscribe({
     next: (data: Declaration[]) => {
       this.declarations = data.filter(declaration => {
         return (!filterValues.filterTypePiece || declaration.typePiece.includes(filterValues.filterTypePiece)) &&

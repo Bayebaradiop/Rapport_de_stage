@@ -16,12 +16,31 @@ class DeclarationController extends Controller
      */
     public function index()
     {
+        
         // Récupération de toutes les déclarations
         $declarations = Declaration::all();
 
         // Retourne les déclarations en JSON
         return response()->json($declarations);
     }
+
+    public function indexbystruc()
+    {
+        // Récupération de l'utilisateur connecté
+        $user = Auth::user();
+    
+        // Vérifier que l'utilisateur est connecté
+        if (!$user) {
+            return response()->json(['message' => 'Utilisateur non authentifié.'], 401);
+        }
+    
+        // Récupération des déclarations appartenant à la même structure que l'utilisateur
+        $declarations = Declaration::where('structureDeclarer', $user->structure)->get();
+    
+        // Retourne les déclarations en JSON
+        return response()->json($declarations);
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -87,29 +106,29 @@ class DeclarationController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        // Validation des données mises à jour
-        $validated = $request->validate([
-            'nomProprietaire' => 'sometimes|string|max:255',
-            'prenomProprietaire' => 'sometimes|string|max:255',
-            'lieu' => 'sometimes|string|max:255',
-            'typePiece' => 'sometimes|string|max:255',
-            'email' => 'sometimes|email|unique:declarations,email,' . $id,
-            'date_ramassage' => 'sometimes|date',
-        ]);
+{
+    // Validation des données mises à jour
+    $validated = $request->validate([
+        'nomProprietaire' => 'sometimes|string|max:255',
+        'prenomProprietaire' => 'sometimes|string|max:255',
+        'lieu' => 'sometimes|string|max:255',
+        'typePiece' => 'sometimes|string|max:255',
+        'email' => 'sometimes|email|unique:declarations,email,' . $id,
+        'date_ramassage' => 'sometimes|date',
+    ]);
 
-        // Récupération de la déclaration à mettre à jour
-        $declaration = Declaration::find($id);
+    // Récupération de la déclaration à mettre à jour
+    $declaration = Declaration::find($id);
 
-        if (!$declaration) {
-            return response()->json(['message' => 'Déclaration non trouvée.'], 404);
-        }
-
-        // Mise à jour des champs
-        $declaration->update($validated);
-
-        return response()->json(['message' => 'Déclaration mise à jour avec succès.']);
+    if (!$declaration) {
+        return response()->json(['message' => 'Déclaration non trouvée.'], 404);
     }
+
+    // Mise à jour des champs
+    $declaration->update($validated);
+
+    return response()->json(['message' => 'Déclaration mise à jour avec succès.']);
+}
 
     /**
      * Remove the specified resource from storage.
