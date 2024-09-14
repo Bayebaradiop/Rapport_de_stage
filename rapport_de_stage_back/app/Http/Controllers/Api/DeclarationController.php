@@ -11,43 +11,32 @@ use Illuminate\Support\Facades\Mail;
 
 class DeclarationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
+    // afficher les declartion dont l'etat est 1
     public function index()
     {
         
-        // Récupération de toutes les déclarations
-        $declarations = Declaration::all();
+        $declarations = Declaration::where('etat',1)->get();;
 
-        // Retourne les déclarations en JSON
         return response()->json($declarations);
     }
 
+    //afficher les declaration par structure
     public function indexbystruc()
     {
         // Récupération de l'utilisateur connecté
         $user = Auth::user();
-    
-        // Vérifier que l'utilisateur est connecté
-        if (!$user) {
-            return response()->json(['message' => 'Utilisateur non authentifié.'], 401);
-        }
-    
+        
         // Récupération des déclarations appartenant à la même structure que l'utilisateur
-        $declarations = Declaration::where('structureDeclarer', $user->structure)->get();
+        $declarations = Declaration::where('structureDeclarer', $user->structure) ->where('etat', 1)->get();
     
-        // Retourne les déclarations en JSON
         return response()->json($declarations);
     }
     
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   //ajouter declaration
     public function store(Request $request)
     {
-        // Validation des données
         $validated = $request->validate([
             'nomProprietaire' => 'required|string|max:255',
             'prenomProprietaire' => 'required|string|max:255',
@@ -63,9 +52,8 @@ class DeclarationController extends Controller
             
         $user = Auth::user();
 
-        $structureDeclarer = $user ? $user->structure : 'default_structure'; // Remplace 'default_structure' si nécessaire
+        $structureDeclarer = $user ? $user->structure : 'default_structure'; 
 
-        // Création de la déclaration
         $declaration = new Declaration();
         $declaration->nomProprietaire = $validated['nomProprietaire'];
         $declaration->  lieu = $validated['lieu'];
@@ -74,9 +62,10 @@ class DeclarationController extends Controller
         $declaration->email = $validated['email'];
         $declaration->structureDeclarer = $structureDeclarer;
         $declaration->date_declarer = now(); 
-        $declaration->date_ramassage = $validated['date_ramassage']; // Correction ici
+        $declaration->date_ramassage = $validated['date_ramassage']; 
         $declaration->save();
 
+        //cette boue de code c pour envoiyer mail apres declaration
         Mail::send('emails.test', ['nom' => $declaration->nomProprietaire, 'declaration' => $declaration], function ($message) use ($declaration) {
             $message->to($declaration->email)
                     ->subject('Confirmation de Déclaration');
@@ -86,28 +75,22 @@ class DeclarationController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(string $id)
     {
-        // Récupération d'une déclaration par ID
         $declaration = Declaration::find($id);
 
         if (!$declaration) {
             return response()->json(['message' => 'Déclaration non trouvée.'], 404);
         }
 
-        // Retourne la déclaration en JSON
         return response()->json($declaration);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
+    //modifier declaration
     public function update(Request $request, string $id)
 {
-    // Validation des données mises à jour
     $validated = $request->validate([
         'nomProprietaire' => 'sometimes|string|max:255',
         'prenomProprietaire' => 'sometimes|string|max:255',
@@ -117,14 +100,12 @@ class DeclarationController extends Controller
         'date_ramassage' => 'sometimes|date',
     ]);
 
-    // Récupération de la déclaration à mettre à jour
     $declaration = Declaration::find($id);
 
     if (!$declaration) {
         return response()->json(['message' => 'Déclaration non trouvée.'], 404);
     }
 
-    // Mise à jour des champs
     $declaration->update($validated);
 
     return response()->json(['message' => 'Déclaration mise à jour avec succès.']);
@@ -133,18 +114,43 @@ class DeclarationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    //supprimer declaration
     public function destroy(string $id)
     {
-        // Récupération de la déclaration à supprimer
         $declaration = Declaration::find($id);
 
         if (!$declaration) {
             return response()->json(['message' => 'Déclaration non trouvée.'], 404);
         }
 
-        // Suppression de la déclaration
         $declaration->delete();
 
         return response()->json(['message' => 'Déclaration supprimée avec succès.']);
     }
+
+
+
+    // pour changer l'etat de la declaration
+
+    public function updateEtat($id) {
+        $declaration = Declaration::find($id);
+        if ($declaration) {
+            $declaration->etat =0; // Modifiez selon vos besoins
+            $declaration->save();
+            
+             Mail::send('emails.pieceRemi', ['nom' => $declaration->nomProprietaire, 'declaration' => $declaration], function ($message) use ($declaration) {
+            $message->to($declaration->email)
+                    ->subject('Confirmation de Déclaration');
+        });
+            return response()->json(['message' => 'État mis à jour avec succès.'], 200);
+        } else {
+            return response()->json(['error' => 'Déclaration introuvable.'], 404);
+        }
+    }
+    
+
+
+
 }
+
+

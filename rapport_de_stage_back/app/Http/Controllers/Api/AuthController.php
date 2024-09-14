@@ -12,7 +12,7 @@ class Authcontroller extends Controller
     
     
 
-
+// la connexion
     
     public function login(Request $request)
     {
@@ -38,43 +38,7 @@ class Authcontroller extends Controller
         }
     }
 
-
-
-    // public function register(Request $request)
-    // {
-    //     $data = $request->validate([
-    //         'nom' => 'required|string|max:255',
-    //         'prenom' => 'required|string|max:255',
-    //         'numTel' => 'required|string|max:255',
-    //         'adresse' => 'required|string|max:255',
-    //         'email' => 'required|email|unique:users,email',
-    //         'password' => 'required|string|confirmed', // Mot de passe confirmé
-    //     ]);
-
-    //     $user = User::create([
-    //         'nom' => $data['nom'],
-    //         'prenom' => $data['prenom'],
-    //         'numTel' => $data['numTel'],
-    //         'adresse' => $data['adresse'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']), // Hachage du mot de passe
-    //     ]);
-
-    //     $token = JWTAuth::fromUser($user);
-
-    //     return response()->json([
-    //         'statut' => 200,
-    //         'message' => 'Utilisateur créé avec succès',
-    //         'token' => $token,
-    //         'user' => $user
-    //     ]);
-    // }
-
-
-
-
-
-
+// la deconnexion
     public function logout()
     {
         auth()->logout();

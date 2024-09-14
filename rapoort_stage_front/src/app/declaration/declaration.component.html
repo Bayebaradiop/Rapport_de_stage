@@ -72,9 +72,11 @@
                           <button data-bs-toggle="modal" data-bs-target="#addProjectSidebar2" class="btn btn-secondary btn-sm" style="margin-right: 7px;"  (click)="showModal2 = true">
                               <i class="fas fa-eye"></i> Modifier
                           </button>
-                          <button  class="btn btn-success btn-sm" style="margin-right: 7px;">
-                              <i>✔</i> Remis
+                          
+                          <button class="btn btn-success btn-sm" style="margin-right: 7px;" (click)="updateEtatDeclaration(declaration.id)">
+                            <i>✔</i> Remis
                           </button>
+                          
                           <button  class="btn btn-danger btn-sm"  (click)="deleteDeclaration(declaration.id)">
                               <i class="fas fa-trash"></i> Supprimer
                           </button>

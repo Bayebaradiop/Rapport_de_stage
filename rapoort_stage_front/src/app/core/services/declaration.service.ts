@@ -57,7 +57,12 @@ return this.http.get<Declaration[]>(`${environnement.ApiUrl}/declarationsbystruc
     return this.http.delete(`${environnement.ApiUrl}/declarations/${id}`, { headers });
   }
 
-
+// pour changer l'etat de la declaration
+  updateEtatDeclaration(id: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.put(`${environnement.ApiUrl}/declarations/${id}/updateEtat`, {}, { headers });
+  }
   
+
   
 }

@@ -145,6 +145,20 @@ resetFilter(): void {
 
 
   
+  updateEtatDeclaration(id: number): void {
+    this.declarationService.updateEtatDeclaration(id).subscribe({
+      next: (response) => {
+        console.log('État de la déclaration mis à jour avec succès', response);
+        this.getDec();  // Rafraîchir la liste des déclarations
+      },
+      error: (error) => {
+        console.error('Erreur lors de la mise à jour de l\'état de la déclaration', error);
+      }
+    });
+  }
+  
+
+
 
 }
 
