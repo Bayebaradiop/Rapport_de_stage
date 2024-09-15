@@ -37,7 +37,7 @@
                                 </p>
                             </div>
 			      	</div>
-					<form class="signin-form">
+					<form [formGroup]="RegistrationForm" (ngSubmit)="inscription()" class="signin-form">
                         <div class="form-group mb-3">
                             <label class="label" for="Prenom">Prenom</label>
                             <input type="text" class="form-control" formControlName="Prenom" placeholder="Prenom" required>
@@ -48,9 +48,19 @@
                             <input type="text" formControlName="Nom" class="form-control" placeholder="Nom" required>
                             <!-- <span *ngIf="valide && RegisterForm.controls.Nom.errors" class="text-danger">* Veillez renseigner le Nom</span> -->
                         </div>
+						<div class="form-group mb-3">
+                            <label class="label" for="Nom">Adresse</label>
+                            <input type="text" formControlName="Adresse" class="form-control" placeholder="Adresse" required>
+                            <!-- <span *ngIf="valide && RegisterForm.controls.Nom.errors" class="text-danger">* Veillez renseigner le Nom</span> -->
+                        </div>
+						<div class="form-group mb-3">
+                            <label class="label" for="Nom">Numero Telephone</label>
+                            <input type="text" formControlName="NumTel" class="form-control" placeholder="Numero Telephone (+221)" required>
+                            <!-- <span *ngIf="valide && RegisterForm.controls.Nom.errors" class="text-danger">* Veillez renseigner le Nom</span> -->
+                        </div>
 			      		<div class="form-group mb-3">
 			      			<label class="label" for="name">Email</label>
-			      			<input type="text" formControlName="Email" class="form-control" placeholder="Email" required>
+			      			<input type="email" formControlName="Email" class="form-control" placeholder="Email" required>
                             <!-- <span *ngIf="valide && RegisterForm.controls.Email.errors" class="text-danger">* Veillez renseigner l'email</span> -->
 			      		</div>
 		                <div class="form-group mb-3">
@@ -63,7 +73,7 @@
 		                    <input type="profil" class="form-control" placeholder="profil" required>
 		                </div>
                         <div class="form-group">
-                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">S'inscrire</button>
+                            <button type="submit" [disabled]="!RegistrationForm.valid" class="form-control btn btn-primary rounded submit px-3">S'inscrire</button>
                         </div>
 		            </form>
 		          <p class="text-center">Vous avez un compte? <a data-toggle="tab" routerLink="/Connexion">Se Connecter</a></p>

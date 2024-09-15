@@ -2,14 +2,14 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { environnement } from '../../environnements/environnement';
 import { Observable, throwError } from 'rxjs';
-import { AuthResponse } from '../model/auth-reponse.module';
+import { AuthResponse, UserData } from '../model/auth-reponse.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-  redirctUrl: string='/login';
+  redirectUrl: string='/login';
   isAuth (): boolean {
     const token = localStorage.getItem('token');
     if (token) {
@@ -38,4 +38,42 @@ export class AuthServiceService {
       { headers }
     );
   }
+
+  registration(request: any):Observable<AuthResponse>{
+    return this.http.post<AuthResponse>(
+      `${environnement.ApiUrl}/SingIn`,
+      request
+    );
+  }
+
+  AjoutAgent(request: any):Observable<AuthResponse>{
+    return this.http.post<AuthResponse>(
+      `${environnement.ApiUrl}/AjoutAgent`,
+      request
+    );
+  }
+  DetailleAgent(id:number):Observable<AuthResponse>{
+    return this.http.get<AuthResponse>(
+      `${environnement.ApiUrl}/getAgentByAgent/id=`+id
+    );
+  }
+
+  getAllAgents(): Observable<UserData[]> {
+    return this.http.get<UserData[]>(
+      `${environnement.ApiUrl}/getAllAgent`,
+    );
+}
+
+  UpdateAgent(request:any):Observable<AuthResponse>{
+    return this.http.put<AuthResponse>(
+      `${environnement.ApiUrl}/updateAgent/`+request.id,request
+    );
+  }
+
+  ArchiverAgent(id:any):Observable<AuthResponse>{
+    return this.http.put<AuthResponse>(
+      `${environnement.ApiUrl}/ArchiverAgent/`+id,{}
+    );
+  }
+
 }

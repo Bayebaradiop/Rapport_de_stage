@@ -79,66 +79,7 @@
        </div>
   </div>
 </div>
-<div class="modal fade" id="addProjectSidebar2">
-  <div class="modal-dialog modal-lg" role="document"> <!-- Utilisez modal-lg pour un modal large -->
-      <div class="modal-content">
-          <div class="modal-header">
-              <h3 class="modal-title">Modifier déclaration de pièces trouvées</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-              <form action="">
-                  <div class="row">
-                      <!-- Colonne Gauche -->
-                      <div class="col-md-6">
-                        <div class="form-group mb-3">
-                          <label class="text-black font-w500">Type Piece perdue</label>
-                          <select class="form-control" formControlName="TypePiecePerdue">
-                              <option value="">--Selectionner--</option>
-                              <option value="Carte d'identitee">Carte d'identitee</option>
-                              <option value="Passeport">Passeport</option>
-                              <option value="Carte bancaire">Carte bancaire</option>
-                              <option value="Permis de conduire">Permis de conduire</option>
-                          </select>
-                      </div>
-                          <div class="form-group">
-                              <label class="text-black font-w500">Prénom Propriétaire</label>
-                              <input type="text" formControlName="Prenom Proprietaire" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label class="text-black font-w500">Nom Propriétaire</label>
-                              <input type="text" formControlName="Nom Proprietaire" class="form-control">
-                          </div>
-                         
-                      </div>
-                      <!-- Colonne Droite -->
-                      <div class="col-md-6">
-                          <div class="form-group">  
-                          <div class="form-group">
-                              <label class="text-black font-w500">Email Déclarant</label>
-                              <input type="email" formControlName="Email" class="form-control">
-                          </div>
-                              <label class="text-black font-w500">Lieu de ramassage</label>
-                              <input type="text" formControlName="Lieu" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label class="text-black font-w500">Date de ramassage</label>
-                              <input type="date" formControlName="DateR" class="form-control">
-                          </div>
-                          <!-- <div class="form-group">
-                              <label class="text-black font-w500">Date</label>
-                              <input type="date" formControlName="Date" class="form-control">
-                          </div> -->
-                      </div>
-                  </div>
-                  <div class="form-group mt-3">
-                      <button type="submit" class="btn btn-success offset-10" data-bs-dismiss="modal">Confirmer</button>
-                  </div>
-              </form>
-          </div>
-      </div>
-  </div>
-</div>
+    
 <!-- *ngIf="tabBurger.length==0" -->
 <!-- <div class="container-fluid d-flex align-items-start justify-content-center min-vh-100">
     <div class="text-center mt-5">

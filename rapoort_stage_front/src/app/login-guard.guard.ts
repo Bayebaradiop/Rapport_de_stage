@@ -10,9 +10,9 @@ export const LoginGuardGuard : CanActivateFn= (route,state)=> {
 
   if(authservice.isAuth()){
     router.navigate(['/dashboard']);
-   return false;
+    return false;
   }
-  router.navigate([authservice.redirctUrl]);
+  router.navigate([authservice.redirectUrl]);
   return true;
 
 }

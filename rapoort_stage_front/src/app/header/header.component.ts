@@ -14,7 +14,7 @@ export class HeaderComponent {
 
   constructor(private authService: AuthServiceService, private router: Router) { }
 
-  logout() {
+  logoutApp() {
     this.authService.logout().subscribe(
       () => {
         localStorage.removeItem('token'); // Supprime le token du localStorage

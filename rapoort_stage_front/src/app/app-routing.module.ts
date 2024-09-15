@@ -14,12 +14,14 @@ import { PiecePerdueComponent } from './piece-perdue/piece-perdue.component';
 import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu-by-person.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginGuardGuard } from './login-guard.guard'; // Importer la guard
+import { ModifierAgentComponent } from './modifier-agent/modifier-agent.component';
 
 const routes: Routes = [
   { path: 'Inscription', component: InscriptionComponent},
-  {  path: 'Connexion', component: LoginComponent},
+  { path: 'Connexion', component: LoginComponent},
   { path: 'Declaration', component: DeclarationComponent},
   { path: 'GestionAgent', component: GestionAgentComponent},
+  { path: 'Modifier/:id', component: ModifierAgentComponent },
   { path: 'DemandeCertificat', component: DemandeComponent},
   { path: 'DetailleDeclaration', component: DetailleDeclarationComponent},
   { path: 'DetailleCertificat', component: DetailleCertificatComponent},
@@ -27,7 +29,7 @@ const routes: Routes = [
   { path: 'PiecePerdue', component: PiecePerdueComponent},  
   {  path: 'dashboard', component:DashboardComponent},  
   { path: 'PiecePerdueByUser', component: PiecePerduByPersonComponent},
-   { path: '', redirectTo: '/Connexion', pathMatch: 'full' },
+  { path: '', redirectTo: '/Connexion', pathMatch: 'full' },
 
 
 

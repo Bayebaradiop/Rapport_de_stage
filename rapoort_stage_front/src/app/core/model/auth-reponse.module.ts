@@ -1,4 +1,5 @@
 export interface UserData {
+  activate: number;
   id: number;
   nom: string;
   prenom :string;
@@ -12,7 +13,7 @@ export interface UserData {
   email_verified_at: string | null;
   created_at: string;
   updated_at: string;
-  role: string;
+
 }
 
 export interface AuthResponse {

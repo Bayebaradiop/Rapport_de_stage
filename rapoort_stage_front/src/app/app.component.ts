@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
   IsFind = false;
   ISlost =false;
   ISPerteByUser =false;
+  IsUpdatePage = false;
 
   constructor(private router: Router) {}
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit{
         this.ISlost = this.router.url ==='/PiecePerdue';
         this.IsFind = this.router.url ==='/PiecesTrouvees';
         this.ISPerteByUser = this.router.url ==='/PiecePerdueByUser';
+        this.IsUpdatePage = this.router.url.startsWith('/Modifier/');
       }
     });
   }
