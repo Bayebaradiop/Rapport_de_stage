@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation de Déclaration</title>
+</head>
+<body>
+    <h1>Bonjour {{ $nom }}</h1>
+    <p>Nous confirmons que le pieces cette a ete remis merci pour votre solidarite</p>
+    <p>Détails de la déclaration :</p>
+    <ul>
+        <li>Nom du propriétaire : {{ $declaration->nomProprietaire }}</li>
+        <li>Prénom du propriétaire : {{ $declaration->prenomProprietaire }}</li>
+        <li>Type de pièce : {{ $declaration->typePiece }}</li>
+        <li>Structure déclarée : {{ $declaration->structureDeclarer }}</li>
+        <li>Lieu : {{ $declaration->lieu }}</li>
+        <li>ramasser le: {{ $declaration->date_ramassage }}</li>
+        <li>declarer le: {{ $declaration->date_declarer }}</li>
+    </ul>
+</body>
+</html>
