@@ -11,18 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('type_structure', function (Blueprint $table) {
-            $table->id();
-            $table->string('libelle',40);
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('activate')->default(1);
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
-        Schema::dropIfExists('type_structure');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('activate');
+        });
     }
+    
 };

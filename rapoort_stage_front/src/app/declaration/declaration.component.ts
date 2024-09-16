@@ -111,22 +111,34 @@ resetFilter(): void {
 
   
 
-  onSubmit(): void {
-    if (this.declarationForm.valid) {
-      const declarationData = this.declarationForm.value;
-      this.declarationService.addDeclaration(declarationData).subscribe({
-        next: (response) => {
-          console.log('Déclaration ajoutée avec succès', response);
-          // Ferme le modal après soumission
-          this.showModal1 = false;
-          this.getDec();
-        },
-        error: (error) => {
-          console.error('Erreur lors de l\'ajout de la déclaration', error);
-        }
-      });
-    }
+onSubmit(): void {
+  if (this.declarationForm.valid) {
+    const declarationData = this.declarationForm.value;
+    this.declarationService.addDeclaration(declarationData).subscribe({
+      next: (response) => {
+        console.log('Déclaration ajoutée avec succès', response);
+        // Fermer le modal après soumission
+        this.showModal1 = false;
+
+        this.declarations.push(response); 
+
+        this.declarationForm.reset();
+
+         this.getDec();
+         
+
+         setTimeout(() => {
+          window.location.reload();
+        }, 0); 
+         
+      },
+      error: (error) => {
+        console.error('Erreur lors de l\'ajout de la déclaration', error);
+      }
+    });
   }
+}
+
 
 
   deleteDeclaration(id: number): void {
@@ -149,7 +161,12 @@ resetFilter(): void {
     this.declarationService.updateEtatDeclaration(id).subscribe({
       next: (response) => {
         console.log('État de la déclaration mis à jour avec succès', response);
-        this.getDec();  // Rafraîchir la liste des déclarations
+        this.getDec();
+        
+        setTimeout(() => {
+          window.location.reload();
+        }, 0); 
+         // Rafraîchir la liste des déclarations
       },
       error: (error) => {
         console.error('Erreur lors de la mise à jour de l\'état de la déclaration', error);

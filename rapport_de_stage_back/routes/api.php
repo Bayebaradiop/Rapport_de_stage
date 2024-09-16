@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//la connexion
+    //la connexion
 Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('login');
 Route::post('/SingIn', [\App\Http\Controllers\Api\AuthController::class, 'singin'])->name('singin');
 Route::post('/AjoutAgent',[\App\Http\Controllers\Api\AuthController::class,'AjoutAgent'])->name('AjoutAgent');

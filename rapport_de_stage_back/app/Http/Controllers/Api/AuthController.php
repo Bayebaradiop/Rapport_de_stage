@@ -142,7 +142,8 @@ class AuthController extends Controller
      * Methode permettant de recuperer tous les agents
      */
     public function getAllAgent(){
-        $AllAgent = User::where('profil',2)->where('activate', 1)->get();
+       $AllAgent = User::where('profil',2)->where('activate', 1)->get();
+        //$AllAgent = User::all();
         return response()->json($AllAgent);
     }
 
