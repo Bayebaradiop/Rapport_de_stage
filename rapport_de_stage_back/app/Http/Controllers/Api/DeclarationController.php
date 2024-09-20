@@ -88,28 +88,31 @@ class DeclarationController extends Controller
     }
 
     
-    //modifier declaration
-    public function update(Request $request, string $id)
+    public function updateDeclaration(Request $request, string $id)
 {
-    $validated = $request->validate([
-        'nomProprietaire' => 'sometimes|string|max:255',
-        'prenomProprietaire' => 'sometimes|string|max:255',
-        'lieu' => 'sometimes|string|max:255',
-        'typePiece' => 'sometimes|string|max:255',
-        'email' => 'sometimes|email|unique:declarations,email,' . $id,
-        'date_ramassage' => 'sometimes|date',
-    ]);
+    try {
+        $declaration = Declaration::findOrFail($id); // Trouver la déclaration à partir de l'ID
 
-    $declaration = Declaration::find($id);
+        // Valider les données du formulaire de modification
+        $validate = $request->validate([
+            'nomProprietaire' => 'required|string',
+            'prenomProprietaire' => 'required|string',
+            'typePiece' => 'required|string',
+            'lieu' => 'required|string',
+            'email' => 'required|email|unique:declarations,email,' . $id, // Email unique sauf pour la déclaration actuelle
+            'date_ramassage' => 'required|date',
+        ]);
 
-    if (!$declaration) {
-        return response()->json(['message' => 'Déclaration non trouvée.'], 404);
+        // Mettre à jour la déclaration avec les données validées
+        $declaration->update($validate);
+
+        // Retourner une réponse JSON
+        return response()->json($declaration, 200);
+    } catch (ModelNotFoundException $e) {
+        return response()->json(['erreur' => 'Déclaration introuvable'], 404);
     }
-
-    $declaration->update($validated);
-
-    return response()->json(['message' => 'Déclaration mise à jour avec succès.']);
 }
+
 
     /**
      * Remove the specified resource from storage.

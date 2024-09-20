@@ -13,8 +13,9 @@ import { PiecesTrouveesComponent } from './pieces-trouvees/pieces-trouvees.compo
 import { PiecePerdueComponent } from './piece-perdue/piece-perdue.component';
 import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu-by-person.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginGuardGuard } from './login-guard.guard'; // Importer la guard
+import { LoginGuardGuard } from './login-guard.guard';
 import { ModifierAgentComponent } from './modifier-agent/modifier-agent.component';
+import { ModifierdeclarationComponent } from './modifierdeclaration/modifierdeclaration.component';
 
 const routes: Routes = [
   { path: 'Inscription', component: InscriptionComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'Declaration', component: DeclarationComponent},
   { path: 'GestionAgent', component: GestionAgentComponent},
   { path: 'Modifier/:id', component: ModifierAgentComponent },
+  { path: 'Modifierdeclaration/:id', component:ModifierdeclarationComponent },
   { path: 'DemandeCertificat', component: DemandeComponent},
   { path: 'DetailleDeclaration', component: DetailleDeclarationComponent},
   { path: 'DetailleCertificat', component: DetailleCertificatComponent},

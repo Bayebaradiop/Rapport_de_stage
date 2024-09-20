@@ -1,33 +1,42 @@
 <div class="content-body"><!--*ngIf="user.Profil==1"-->
   <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <label for="date">Type de la piece</label>
-          <select class="form-control" formControlName="TypePiecePerdue">
-              <option value="">--Selectionner--</option>
-              <option value="Carte d'identitee">Carte d'identitee</option>
-              <option value="Passeport">Passeport</option>
-              <option value="Carte bancaire">Carte bancaire</option>
-              <option value="Permis de conduire">Permis de conduire</option>
-          </select>
-        </div>
-        <!-- <div class="col-md-3">
-          <label for="lieu">Lieu</label>
-          <input type="text" id="lieu" class="form-control" >
-        </div> -->
-        <div class="col-md-2">
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" class="form-control">
-        </div>
-        <div class="col-md-2">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" class="form-control" >
-        </div>
-        <div class="col-md-2 d-flex align-items-end">
-          <button class="btn btn-primary" >Appliquer le filtre</button>
-        </div>
-      </div>
+    <form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
+  <div class="row">
+    <div class="col-md-3">
+      <label for="date">Type de la piece</label>
+      <select class="form-control" formControlName="filterTypePiece">
+        <option value="">--Selectionner--</option>
+        <option value="Carte d'identitee">Carte d'identitee</option>
+        <option value="Passeport">Passeport</option>
+        <option value="Carte bancaire">Carte bancaire</option>
+        <option value="Permis de conduire">Permis de conduire</option>
+    </select>
     </div>
+    <!-- <div class="col-md-3">
+      <label for="lieu">Lieu</label>
+      <input type="text" id="lieu" class="form-control" >
+    </div> -->
+    <div class="col-md-2">
+      <label for="prenom">Prénom</label>
+      <input type="text" id="filterPrenom" formControlName="filterPrenom" class="form-control">
+    </div>
+    <div class="col-md-2">
+      <label for="nom">Nom</label>
+      <input type="text" id="filterNom" formControlName="filterNom" class="form-control" >
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button class="btn btn-primary" type="submit" >Appliquer le filtre</button>
+
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <button class="btn btn-secondary" type="button" (click)="resetFilter()">Réinitialiser</button>
+
+      </div>
+
+  </div>
+</form>
+
+</div>
   <div class="container-fluid">
       
       <div class="row g-4" >

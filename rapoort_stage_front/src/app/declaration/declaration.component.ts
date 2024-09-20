@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DeclarationService } from 'src/app/core/services/declaration.service';
 import { Declaration } from '../core/model/declaration.model';
 
+
 @Component({
   selector: 'app-declaration',
   templateUrl: './declaration.component.html',

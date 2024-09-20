@@ -23,7 +23,7 @@ Route::post('/SingIn', [\App\Http\Controllers\Api\AuthController::class, 'singin
 Route::post('/AjoutAgent',[\App\Http\Controllers\Api\AuthController::class,'AjoutAgent'])->name('AjoutAgent');
 Route::get('/getAgentByAgent/id={id}',[\App\Http\Controllers\Api\AuthController::class,'getAgentByAgent'])->name('getAgentByAgent');
 Route::get('/getAllAgent',[\App\Http\Controllers\Api\AuthController::class,'getAllAgent'])->name('getAllAgent');
-Route::put('/updateAgent/{id}',[\App\Http\Controllers\Api\AuthController::class,'updateAgent'])->name('updateAgent');
+Route::put('/updateDeclaration/{id}', [\App\Http\Controllers\DeclarationController::class, 'updateDeclaration'])->name('updateDeclaration');
 Route::put('/ArchiverAgent/{id}',[\App\Http\Controllers\Api\AuthController::class,'Archiver'])->name('Archiver');
 
 
@@ -47,7 +47,8 @@ Route::middleware('auth:api')
 
         //mise en jour de l'etat de la declaration
         Route::put('/declarations/{id}/updateEtat', [\App\Http\Controllers\Api\DeclarationController::class, 'updateEtat']);
-   
+        Route::put('/declarations/{id}/updatedec', [\App\Http\Controllers\Api\DeclarationController::class, 'updatedec']);
+
 
     });
 

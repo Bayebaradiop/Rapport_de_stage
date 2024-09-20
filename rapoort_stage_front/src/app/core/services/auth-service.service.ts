@@ -39,6 +39,8 @@ export class AuthServiceService {
     );
   }
 
+  
+
   registration(request: any):Observable<AuthResponse>{
     return this.http.post<AuthResponse>(
       `${environnement.ApiUrl}/SingIn`,

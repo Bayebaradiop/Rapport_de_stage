@@ -31,6 +31,15 @@ export class DeclarationService {
   }
   
 
+getDeclarationDetails(id: string): Observable<any> {
+  return this.http.get(`${environnement.ApiUrl}/declaration/${id}`);
+}
+
+updateDeclaration(declaration: any): Observable<any> {
+  return this.http.put<any>(`${environnement.ApiUrl}/updateDeclaration/` + declaration.id, declaration);
+}
+
+
 
   getall():Observable<Declaration[]>{
         const headers=this.getAuthHeaders();

@@ -20,6 +20,7 @@ import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModifierAgentComponent } from './modifier-agent/modifier-agent.component';
+import { ModifierdeclarationComponent } from './modifierdeclaration/modifierdeclaration.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ModifierAgentComponent } from './modifier-agent/modifier-agent.componen
     PiecePerdueComponent,
     PiecesTrouveesComponent,
     PiecePerduByPersonComponent,
-    ModifierAgentComponent
+    ModifierAgentComponent,
+    ModifierdeclarationComponent
   ],
   imports: [
     BrowserModule,
