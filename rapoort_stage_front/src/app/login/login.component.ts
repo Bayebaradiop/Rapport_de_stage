@@ -16,15 +16,18 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required]),
   });
 
-  constructor(private authService: AuthServiceService, private router: Router) { }
-
+  constructor(private authService: AuthServiceService, private router: Router) {}
   login() {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         (response) => {
           if (response.statut === 200) {
-            console.log(response);
             localStorage.setItem('token', response.token);
+            const typeStructure = response.data?.typeStructure || ''; // Utilise une chaîne vide si typeStructure est null ou undefined
+            localStorage.setItem('typeStructure', typeStructure);
+            console.log(response.data);
+           console.log('Type de structure:', typeStructure);
+
             this.router.navigate(['/dashboard']).then(() => {
               setTimeout(() => {
                 window.location.reload();

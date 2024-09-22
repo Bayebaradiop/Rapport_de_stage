@@ -23,25 +23,25 @@
                     <span class="nav-text">Pieces perdues</span>
                 </a>
             </li>
-            <li>
+            <li *ngIf="typeStructure !== ''">
                 <a  routerLink="PiecePerdue">
                     <i class="flaticon-contract"></i>
                     <span class="nav-text">declaration perte</span>
                 </a>
             </li>
-            <li>
+            <li *ngIf="typeStructure !== ''">
                 <a  routerLink="GestionAgent">
                     <i class="flaticon-form"></i>
                     <span class="nav-text">Gestion des Agents</span>
                 </a>
             </li>
-            <li >
+            <li *ngIf="typeStructure !== ''">
                 <a routerLink="Declaration" >
                     <i class="flaticon-contract"></i>
                     <span class="nav-text">Declaration ramassage</span>
                 </a>
             </li>
-           <li>
+            <li *ngIf="typeStructure !=='' && typeStructure !== 'Senegal services'">
                 <a routerLink="DemandeCertificat">
                     <i class="flaticon-newsletter"></i>
                     <span class="nav-text">Certificat de Perte</span>

@@ -88,7 +88,7 @@ class DeclarationController extends Controller
     }
 
     
-    public function updateDeclaration(Request $request, string $id)
+    public function updatedec(Request $request, string $id)
 {
     try {
         $declaration = Declaration::findOrFail($id); // Trouver la déclaration à partir de l'ID
@@ -113,6 +113,18 @@ class DeclarationController extends Controller
     }
 }
 
+public function getdecbyid(string $id) {
+    if (is_null($id)) {
+        return response()->json(['erreur' => 'ID invalide'], 400);
+    }
+
+    try {
+        $dec = Declaration::findOrFail($id);
+        return response()->json($dec, 200);
+    } catch (ModelNotFoundException $e) {
+        return response()->json(['erreur' => 'Élément introuvable'], 404);
+    }
+}
 
     /**
      * Remove the specified resource from storage.

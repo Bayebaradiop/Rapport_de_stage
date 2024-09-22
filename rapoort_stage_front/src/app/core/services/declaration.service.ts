@@ -31,12 +31,14 @@ export class DeclarationService {
   }
   
 
-getDeclarationDetails(id: string): Observable<any> {
-  return this.http.get(`${environnement.ApiUrl}/declaration/${id}`);
+getDeclarationById(id: string): Observable<any> {
+  return this.http.get<any>(`${environnement.ApiUrl}/declarations/${id}`);
 }
 
-updateDeclaration(declaration: any): Observable<any> {
-  return this.http.put<any>(`${environnement.ApiUrl}/updateDeclaration/` + declaration.id, declaration);
+// Mettre à jour une déclaration
+updatedec(declaration: any): Observable<any> {
+  const headers = this.getAuthHeaders(); // Assure-toi que cette méthode est définie
+  return this.http.put<any>(`${environnement.ApiUrl}/declarations/${declaration.id}/updatedec`, declaration, { headers });
 }
 
 

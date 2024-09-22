@@ -11,36 +11,41 @@ use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
-   
-    
-  
-   /**
-    * Methode pour la connexion
-    */
-    public function login(Request $request)
-    {
-        $data =  $request->validate([
-            "email" => "required|email|",
-            "password" => "required"
+
+ 
+  public function login(Request $request)
+{
+    $data = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    // Tentative de connexion avec JWT
+    $token = JWTAuth::attempt($data);
+
+    if (!empty($token)) {
+        $user = auth()->user();
+
+        // Renvoie la réponse avec 'typeStructure' et le token
+        return response()->json([
+            'statut' => 200,
+            'data' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'typeStructure' => $user->typeStructure, // Inclusion de typeStructure
+            ],
+            'token' => $token
         ]);
-
-        $token = JWTAuth::attempt($data);
-
-        if(!empty($token))
-        {
-            return response()->json([
-                'statut' => 200,
-                'data'=> auth()->user(),
-                "token" =>  $token
-            ]);
-
-        }else{
-            return response()->json([
-                "statut" => false,
-                "token" =>  null
-            ]);
-        }
+    } else {
+        return response()->json([
+            'statut' => false,
+            'message' => 'Invalid credentials',
+            'token' => null
+        ]);
     }
+}
+
 
     /**
      * Methode pour la deconnection

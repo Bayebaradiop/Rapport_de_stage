@@ -1,0 +1,61 @@
+<div class="content-body">
+    <div class="container mt-5">
+        <h3 class="mb-4">Modifier la Déclaration</h3>
+        <form [formGroup]="declarationForm" (ngSubmit)="updateDeclaration()">
+            <div class="row">
+                <!-- Colonne Gauche -->
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="text-black font-w500">Prénom</label>
+                        <input type="text" formControlName="prenomProprietaire" class="form-control" required>
+                        <div *ngIf="declarationForm.get('prenomProprietaire')?.invalid && (declarationForm.get('prenomProprietaire')?.touched || declarationForm.get('prenomProprietaire')?.dirty)" class="text-danger">
+                            <small>Le prénom est requis.</small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-black font-w500">Nom</label>
+                        <input type="text" formControlName="nomProprietaire" class="form-control" required>
+                        <div *ngIf="declarationForm.get('nomProprietaire')?.invalid && (declarationForm.get('nomProprietaire')?.touched || declarationForm.get('nomProprietaire')?.dirty)" class="text-danger">
+                            <small>Le nom est requis.</small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-black font-w500">Type de pièce</label>
+                        <input type="text" formControlName="typePiece" class="form-control" required>
+                        <div *ngIf="declarationForm.get('typePiece')?.invalid && (declarationForm.get('typePiece')?.touched || declarationForm.get('typePiece')?.dirty)" class="text-danger">
+                            <small>Le type de pièce est requis.</small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-black font-w500">Lieu</label>
+                        <input type="text" formControlName="lieu" class="form-control" required>
+                        <div *ngIf="declarationForm.get('lieu')?.invalid && (declarationForm.get('lieu')?.touched || declarationForm.get('lieu')?.dirty)" class="text-danger">
+                            <small>Le lieu est requis.</small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-black font-w500">Email</label>
+                        <input type="email" formControlName="email" class="form-control" required>
+                        <div *ngIf="declarationForm.get('email')?.invalid && (declarationForm.get('email')?.touched || declarationForm.get('email')?.dirty)" class="text-danger">
+                            <small>Un email valide est requis.</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- Colonne Droite -->
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="text-black font-w500">Date de ramassage</label>
+                        <input type="date" formControlName="date_ramassage" class="form-control" required>
+                        <div *ngIf="declarationForm.get('date_ramassage')?.invalid && (declarationForm.get('date_ramassage')?.touched || declarationForm.get('date_ramassage')?.dirty)" class="text-danger">
+                            <small>La date de ramassage est requise.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-success" [disabled]="declarationForm.invalid">Confirmer</button>
+                <button type="button" class="btn btn-secondary ms-2" (click)="cancel()">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
