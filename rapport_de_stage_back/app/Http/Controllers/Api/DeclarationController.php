@@ -88,43 +88,7 @@ class DeclarationController extends Controller
     }
 
     
-    public function updatedec(Request $request, string $id)
-{
-    try {
-        $declaration = Declaration::findOrFail($id); // Trouver la déclaration à partir de l'ID
-
-        // Valider les données du formulaire de modification
-        $validate = $request->validate([
-            'nomProprietaire' => 'required|string',
-            'prenomProprietaire' => 'required|string',
-            'typePiece' => 'required|string',
-            'lieu' => 'required|string',
-            'email' => 'required|email|unique:declarations,email,' . $id, // Email unique sauf pour la déclaration actuelle
-            'date_ramassage' => 'required|date',
-        ]);
-
-        // Mettre à jour la déclaration avec les données validées
-        $declaration->update($validate);
-
-        // Retourner une réponse JSON
-        return response()->json($declaration, 200);
-    } catch (ModelNotFoundException $e) {
-        return response()->json(['erreur' => 'Déclaration introuvable'], 404);
-    }
-}
-
-public function getdecbyid(string $id) {
-    if (is_null($id)) {
-        return response()->json(['erreur' => 'ID invalide'], 400);
-    }
-
-    try {
-        $dec = Declaration::findOrFail($id);
-        return response()->json($dec, 200);
-    } catch (ModelNotFoundException $e) {
-        return response()->json(['erreur' => 'Élément introuvable'], 404);
-    }
-}
+    
 
     /**
      * Remove the specified resource from storage.

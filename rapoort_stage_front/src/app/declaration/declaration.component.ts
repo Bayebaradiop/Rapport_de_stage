@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DeclarationService } from 'src/app/core/services/declaration.service';
 import { Declaration } from '../core/model/declaration.model';
 
-
 @Component({
   selector: 'app-declaration',
   templateUrl: './declaration.component.html',
@@ -117,20 +116,20 @@ onSubmit(): void {
     const declarationData = this.declarationForm.value;
     this.declarationService.addDeclaration(declarationData).subscribe({
       next: (response) => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 0);
         console.log('Déclaration ajoutée avec succès', response);
-        // Fermer le modal après soumission
-        this.showModal1 = false;
 
+   
         this.declarations.push(response); 
 
+      
         this.declarationForm.reset();
 
          this.getDec();
          
 
-         setTimeout(() => {
-          window.location.reload();
-        }, 0); 
          
       },
       error: (error) => {
@@ -147,7 +146,7 @@ onSubmit(): void {
       this.declarationService.deleteDeclaration(id).subscribe({
         next: () => {
           console.log(`Déclaration avec l'ID ${id} supprimée avec succès.`);
-          this.getDec(); // Rafraîchir la liste après suppression
+          this.getDec(); 
         },
         error: (error) => {
           console.error('Erreur lors de la suppression de la déclaration', error);

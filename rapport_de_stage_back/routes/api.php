@@ -37,7 +37,6 @@ Route::middleware('auth:api')
         Route::delete('/declarations/{id}', [\App\Http\Controllers\Api\DeclarationController::class, 'destroy']);
 
         //Ajouter une declaration
-        Route::post('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'store']);
 
         //Afficher tous les declarations
         Route::get('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'index']);
@@ -50,5 +49,4 @@ Route::middleware('auth:api')
 
     });
 
-    Route::get('/declarations/{id}', [\App\Http\Controllers\Api\DeclarationController::class, 'getdecbyid'])->name('getdecbyid');
-    Route::put('/declarations/{id}/updatedec', [\App\Http\Controllers\Api\DeclarationController::class, 'updatedec'])->name('updateDeclaration');
+    Route::post('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'store']);
