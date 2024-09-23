@@ -40,6 +40,7 @@ Route::middleware('auth:api')
 
         //Afficher tous les declarations
         Route::get('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'index']);
+        Route::post('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'store']);
 
         //afficher les declaration par structure
         Route::get('/declarationsbystruc', [\App\Http\Controllers\Api\DeclarationController::class, 'indexbystruc']); 
@@ -49,4 +50,3 @@ Route::middleware('auth:api')
 
     });
 
-    Route::post('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'store']);

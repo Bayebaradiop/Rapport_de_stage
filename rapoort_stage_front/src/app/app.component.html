@@ -32,7 +32,7 @@
         <app-declaration></app-declaration>
       </div>
       
-      <div *ngIf="!isDeclaration && !isGestAgnt && !isDemande && !isDetaille && !isCertificatDetaille && !ISlost && !IsFind && !ISPerteByUser && !IsUpdatePage  && !modifier">
+      <div *ngIf="!isDeclaration && !isGestAgnt && !isDemande && !isDetaille && !isCertificatDetaille && !ISlost && !IsFind && !ISPerteByUser && !IsUpdatePage ">
         <app-dashboard></app-dashboard>
       </div>
       <div *ngIf="isGestAgnt">
@@ -61,10 +61,7 @@
         <app-modifier-agent></app-modifier-agent>
       </div>
 
-      <div *ngIf="modifier">
-        <app-modifierdeclaration></app-modifierdeclaration>
-      </div>
-
+     
 
       
       <app-footer></app-footer>

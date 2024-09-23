@@ -15,15 +15,13 @@ import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginGuardGuard } from './login-guard.guard';
 import { ModifierAgentComponent } from './modifier-agent/modifier-agent.component';
-import { ModifierdeclarationComponent } from './modifierdeclaration/modifierdeclaration.component';
+//import { ModifierdeclarationComponent } from './modifierdeclaration/modifierdeclaration.component';
 
 const routes: Routes = [
   { path: 'Inscription', component: InscriptionComponent},
   { path: 'Connexion', component: LoginComponent},
   { path: 'Declaration', component: DeclarationComponent},
-  { path: 'GestionAgent', component: GestionAgentComponent},
-  { path: 'Modifier/:id', component: ModifierAgentComponent },
-  { path: 'Modifierdeclaration/:id', component:ModifierdeclarationComponent },
+  { path: 'GestionAgent', component: GestionAgentComponent},//{ path: 'Modifier/:id', component: ModifierAgentComponent },
   { path: 'DemandeCertificat', component: DemandeComponent},
   { path: 'DetailleDeclaration', component: DetailleDeclarationComponent},
   { path: 'DetailleCertificat', component: DetailleCertificatComponent},
