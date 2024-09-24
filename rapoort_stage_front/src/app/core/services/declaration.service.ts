@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environnement } from '../../environnements/environnement';
 import { Declaration, DeclarationResponse } from '../model/declaration.model';
+import { AuthResponse } from '../model/auth-reponse.module';
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +40,8 @@ export class DeclarationService {
 
   getallbystruc():Observable<Declaration[]>{
     const headers=this.getAuthHeaders();
-return this.http.get<Declaration[]>(`${environnement.ApiUrl}/declarationsbystruc`, {headers,});
-}
+    return this.http.get<Declaration[]>(`${environnement.ApiUrl}/declarationsbystruc`, {headers,});
+  }
 
  
   
@@ -63,6 +64,46 @@ return this.http.get<Declaration[]>(`${environnement.ApiUrl}/declarationsbystruc
     return this.http.put(`${environnement.ApiUrl}/declarations/${id}/updateEtat`, {}, { headers });
   }
   
+  //perte
 
-  
+  ajouterDeclarationPerte(response:any):Observable<AuthResponse>{
+    const headers = this.getAuthHeaders();
+    return this.http.post<AuthResponse>(`${environnement.ApiUrl}/declarationPerte`, response, { headers });
+  }
+
+  getallDeclarePerte():Observable<Declaration[]>{
+    const headers=this.getAuthHeaders();
+    return this.http.get<Declaration[]>(`${environnement.ApiUrl}/getDeclarePerte`);
+  }
+
+  getAllPerteOnStruc():Observable<any>{
+    const headers=this.getAuthHeaders();
+    return this.http.get<any>(`${environnement.ApiUrl}/indexbystrucPerteDoc`,{ headers });
+  }
+
+  getPerteById(id:number):Observable<any>{
+    const headers=this.getAuthHeaders();
+    return this.http.get<any>(`${environnement.ApiUrl}/getDeclaration/`+id,{ headers });
+  }
+
+  updateLostDoc(request:any):Observable<any>{
+    const headers=this.getAuthHeaders();
+    return this.http.put<any>(`${environnement.ApiUrl}/updateLostDoc/`+request.id, request,{ headers });
+  }
+
+  updateDeclarationsFound(request:any):Observable<any>{
+    const headers=this.getAuthHeaders();
+    return this.http.put<any>(`${environnement.ApiUrl}/updateDeclarationDocFound/`+request.id, request,{ headers });
+ 
+  }
+
+  declarationByEmail():Observable<any>{
+    const headers=this.getAuthHeaders();
+    return this.http.get<any>(`${environnement.ApiUrl}/getDeclarByEmail`,{headers});
+  }
+  getpiecesimilaire():Observable<any>{
+    const headers=this.getAuthHeaders();
+    return this.http.get<any>(`${environnement.ApiUrl}/getpiecesimilaire`,{headers});
+    
+  }
 }

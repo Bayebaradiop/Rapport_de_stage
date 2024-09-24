@@ -17,6 +17,8 @@ export class HeaderComponent {
   logoutApp() {
     this.authService.logout().subscribe(
       () => {
+        console.log('Token:', localStorage.getItem('token'));
+        
         localStorage.removeItem('token'); // Supprime le token du localStorage
         this.router.navigate(['/Connexion']).then(() => {
           window.location.reload(); // Rafraîchit la page après déconnexion

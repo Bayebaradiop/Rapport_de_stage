@@ -15,6 +15,8 @@ import { PiecePerduByPersonComponent } from './piece-perdu-by-person/piece-perdu
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginGuardGuard } from './login-guard.guard'; // Importer la guard
 import { ModifierAgentComponent } from './modifier-agent/modifier-agent.component';
+import { ModifierDecComponent } from './modifier-dec/modifier-dec.component';
+import { ModifierDecPieceRemisComponent } from './modifier-dec-piece-remis/modifier-dec-piece-remis.component';
 
 const routes: Routes = [
   { path: 'Inscription', component: InscriptionComponent},
@@ -27,8 +29,10 @@ const routes: Routes = [
   { path: 'DetailleCertificat', component: DetailleCertificatComponent},
   { path: 'PiecesTrouvees', component: PiecesTrouveesComponent},
   { path: 'PiecePerdue', component: PiecePerdueComponent},  
-  {  path: 'dashboard', component:DashboardComponent},  
+  { path: 'dashboard', component:DashboardComponent},  
+  { path: 'ModifierDec/:id', component:ModifierDecComponent},    
   { path: 'PiecePerdueByUser', component: PiecePerduByPersonComponent},
+  { path: 'ModifierPieceRemis/:id', component:ModifierDecPieceRemisComponent},    
   { path: '', redirectTo: '/Connexion', pathMatch: 'full' },
 
 

@@ -27,6 +27,7 @@ Route::put('/updateAgent/{id}',[\App\Http\Controllers\Api\AuthController::class,
 Route::put('/ArchiverAgent/{id}',[\App\Http\Controllers\Api\AuthController::class,'Archiver'])->name('Archiver');
 
 
+      
 Route::middleware('auth:api')
     ->group(function (){
 
@@ -39,6 +40,14 @@ Route::middleware('auth:api')
         //Ajouter une declaration
         Route::post('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'store']);
 
+        /*
+         * declaration de perte
+         */
+        Route::post('/declarationPerte',[\App\Http\Controllers\Api\DeclarationController::class, 'declarationPerte'])->name('declarationPerte');
+
+        /** */
+        Route::get('/getDeclaration/{id}',[\App\Http\Controllers\Api\DeclarationController::class, 'show']);
+
         //Afficher tous les declarations
         Route::get('/declarations', [\App\Http\Controllers\Api\DeclarationController::class, 'index']);
 
@@ -47,7 +56,20 @@ Route::middleware('auth:api')
 
         //mise en jour de l'etat de la declaration
         Route::put('/declarations/{id}/updateEtat', [\App\Http\Controllers\Api\DeclarationController::class, 'updateEtat']);
-   
+        /** Modifier */
+        Route::put('/updateLostDoc/{id}',[\App\Http\Controllers\Api\DeclarationController::class, 'updateLostDoc']);
+        
+        Route::get('/indexbystrucPerteDoc',[\App\Http\Controllers\Api\DeclarationController::class, 'indexbystrucPerteDoc']);
 
+        /** get declaration by email */
+        Route::get('/getDeclarByEmail',[\App\Http\Controllers\Api\DeclarationController::class, 'getDeclarByEmail']);
+
+        Route::get('/getpiecesimilaire',[\App\Http\Controllers\Api\DeclarationController::class, 'getpiecesimilaire']);
+
+        Route::put('/updateDeclarationDocFound/{id}',[\App\Http\Controllers\Api\DeclarationController::class,'update']);
     });
+ /**
+         * tous les pieces declarer comme perdue pour l'interface agent
+         */
+        Route::get('getDeclarePerte',[\App\Http\Controllers\Api\DeclarationController::class, 'getDeclarePerte']);
 

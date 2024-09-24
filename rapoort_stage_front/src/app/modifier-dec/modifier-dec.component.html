@@ -1,0 +1,50 @@
+<div class="content-body">
+<div class="container mt-5">
+    
+        <form [formGroup]="modifierDeclarationForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <!-- Colonne Gauche -->
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label class="text-black font-w500">Type de Pièce perdue</label>
+                <select class="form-control" id="typePiece" formControlName="typePiece">
+                  <option value="">--Sélectionner--</option>
+                  <option value="Carte d'identitee">Carte d'identité</option>
+                  <option value="Passeport">Passeport</option>
+                  <option value="Carte bancaire">Carte bancaire</option>
+                  <option value="Permis de conduire">Permis de conduire</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="text-black font-w500">Prénom Propriétaire</label>
+                <input type="text" id="prenomProprietaire" formControlName="prenomProprietaire" class="form-control">
+              </div>
+              <div class="form-group">
+                <label class="text-black font-w500">Nom Propriétaire</label>
+                <input type="text" id="nomProprietaire" formControlName="nomProprietaire" class="form-control">
+              </div>
+            </div>
+            <!-- Colonne Droite -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="text-black font-w500">Lieu supposé de la perte</label>
+                <input type="text" id="lieu" formControlName="lieu" class="form-control">
+              </div>
+              <div class="form-group">
+                <label class="text-black font-w500">Date supposée de la perte</label>
+                <input type="date" id="date_perte" formControlName="date_perte" class="form-control">
+              </div>
+              <div class="form-group">
+                <label class="text-black font-w500">Email Déclarant</label>
+                <input type="email" id="email" formControlName="email" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <button type="submit" class="btn btn-success offset-11">Modifier</button>
+          </div>
+        </form>
+      </div>
+</div>
+
+  

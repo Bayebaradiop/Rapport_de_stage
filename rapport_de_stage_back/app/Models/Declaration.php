@@ -14,11 +14,12 @@ class Declaration extends Model
         'prenomProprietaire',
         'lieu',
         'typePiece',
-        	'email',
-          'structureDeclarer',
-            'etat',
-              'date_declarer',
-              'date_ramassage',
+        'email',
+        'structureDeclarer',
+        'etat',
+        'date_declarer',
+        'date_ramassage',
+        'date_perte',
     ];
 
 }
